@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #282c34;
 }
 
 .App-logo {
@@ -35,4 +40,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+.Button-Container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px); /* 3 buttons per row */
+  gap: 20px; /* Space between buttons */
+  justify-content: center;
 }
