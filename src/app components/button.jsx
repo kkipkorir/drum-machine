@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef } from "react";
+import {useEffect,useRef } from "react";
 
 const MyButton = ({keyboardKey,audioSrc,power,volume,onPlay}) => {
     const audioRef = useRef();
@@ -38,15 +38,34 @@ const MyButton = ({keyboardKey,audioSrc,power,volume,onPlay}) => {
             });
            
           onPlay(audioRef.current.currentSrc.split('/').pop().split('.')[0]);
-          console.log(audioRef.current.currentSrc.split('/').pop().split('.')[0]);
+          
           }
-         
+         else{
+            onPlay("")
+         }
         
     };
 
+     // Function to handle keypress and play the corresponding audio
+  const handleKeyPress = (e) => {
+    if (e.key.toUpperCase() === keyboardKey.toUpperCase()) {
+      playAudio();  // Play audio when the correct key is pressed
+    }
+  };
+
+  // useEffect to listen for keypress events
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyPress);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [power, volume]);
+
     return (
         <>
-        <button style={buttonStyle} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onClick={playAudio} >
+        <button className='drum-pad' style={buttonStyle} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onClick={playAudio} >
             {keyboardKey}
             <audio ref={audioRef} onError={() => console.error("Audio failed to load")}>
                 <source src={audioSrc} type="audio/mpeg"/>

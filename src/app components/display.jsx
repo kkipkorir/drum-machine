@@ -9,8 +9,8 @@ const MyDisplay = ({jina}) => {
         borderRadius:'5px'
     }
     return (
-        <div style={styleContainerDiv}>
-            <span>{" "+jina}</span>
+        <div id="display" style={styleContainerDiv}>
+            <span>{jina||" "}</span>
         </div>
     )
 }

@@ -20,7 +20,7 @@ const appReducer = (state=initialState,action)=>{
         case SETBANK:
             return{...state, bank: action.payload}
         case SETNAME:
-            return{...state, bank: !state.bank}
+            return{...state, name: action.payload}
         default:
             return state;
     }

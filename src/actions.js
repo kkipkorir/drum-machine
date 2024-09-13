@@ -6,8 +6,9 @@ export const togglePower = (power) => ({
     payload: power,
 });
 
-export const toggleBank = () => ({
-    type: 'SET_BANK'
+export const toggleBank = (bank) => ({
+    type: 'SET_BANK',
+    payload:bank
 })
 
 export const setName = (name) => ({
