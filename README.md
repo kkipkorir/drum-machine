@@ -22,7 +22,7 @@ This is a fully functional **Drum Machine** built using **React** and **Redux**.
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/drum-machine-app.git
+   git clone https://github.com/kkipkorire/drum-machine-app.git
    cd drum-machine-app
 
 2. **Install dependecies**
