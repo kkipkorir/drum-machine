@@ -2,9 +2,22 @@
   text-align: center;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #282c34;
+}
+
+.AppContents{
+  text-align: center;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #282c34;
+  border: solid 2px wheat;
+  padding: 4px;
+  border-radius: 5px;
 }
 
 .App-logo {

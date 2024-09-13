@@ -1,9 +1,9 @@
 import React from "react";
-import { useState } from "react";
 import { useRef } from "react";
 
-const MyButton = (props) => {
+const MyButton = ({keyboardKey,audioSrc,power,volume,onPlay}) => {
     const audioRef = useRef();
+    
 
 
     const buttonStyle = {
@@ -29,15 +29,27 @@ const MyButton = (props) => {
     }
 
     const playAudio = () => {
-        audioRef.current.play();
-    }
+       
+        if (power && audioRef.current) {
+            audioRef.current.volume = volume; // Ensure full volume
+            audioRef.current.currentTime = 0; // Reset time to allow multiple clicks
+            audioRef.current.play().catch(error => {
+              console.error("Error playing sound:", error);
+            });
+           
+          onPlay(audioRef.current.currentSrc.split('/').pop().split('.')[0]);
+          console.log(audioRef.current.currentSrc.split('/').pop().split('.')[0]);
+          }
+         
+        
+    };
 
     return (
         <>
         <button style={buttonStyle} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onClick={playAudio} >
-            {props.keyboardKey}
-            <audio ref={audioRef}>
-                <source src={props.audiosrc} type="audio/mpeg"/>
+            {keyboardKey}
+            <audio ref={audioRef} onError={() => console.error("Audio failed to load")}>
+                <source src={audioSrc} type="audio/mpeg"/>
             </audio>
         </button>
         </>
